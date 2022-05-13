@@ -13,6 +13,10 @@ or using the `runps` shell script included. Or take each function (and
 its dependencies) and copy it into your single program file; I'm
 working on a helper program to do this automatically.
 
+I'm licencing these under GPL v3, but if you do actually get any use
+out of them, or want any functionality added, I'd love to hear about
+it.
+
 # The Libraries
 ## deepeq
 
@@ -152,26 +156,26 @@ Converts a julian date to year-month-day.
 Generate an (unsorted) list of prime numbers less than or equal to the
 parameter. (Often you'll then want to quicksort them.)
 
-20 genprimes quicksort → [ 2 3 5 7 11 13 17 19 ]
+    20 genprimes quicksort → [ 2 3 5 7 11 13 17 19 ]
 
 * primefactor
 
 Generate a dict of prime factors and their powers.
 
-75 primefactor → << 3 1 5 2 >>
+    75 primefactor → << 3 1 5 2 >>
 
 * gcd
 
 Calculate the greatest common divisor (highest common factor) of two
 numbers.
 
-8 12 gcd → 4
+    8 12 gcd → 4
 
 * lcm
 
 Calculate the lowest common multiple of two numbers.
 
-4 6 lcm → 12
+    4 6 lcm → 12
 
 ## permute
 
@@ -209,9 +213,10 @@ Joins an array of strings with a joining string.
 * strsplit
 
 Breaks down a string into an array of strings (eliding any zero-length
-output)
+output).
 
     (this and that and the other) ( and ) strsplit
+    → [ (this) (that) (the other) ]
 
 * s2a
 
