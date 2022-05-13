@@ -1,0 +1,39 @@
+    
+/permute { % [array] {proc} permute runs proc on each permutation of array
+    7 dict begin
+    /permute.subproc exch def
+    /permute.a exch def
+    /permute.n permute.a length def
+    /permute.c [ permute.n { 0 } repeat ] def
+    permute.a permute.subproc
+    /permute.i 0 def
+    {
+        permute.i permute.n ge {
+            exit
+        } if
+        permute.c permute.i get permute.i lt {
+            permute.i 2 mod 0 eq {
+                0 permute.i permute.swap
+            } {
+                permute.c permute.i get permute.i permute.swap
+            } ifelse
+            permute.a permute.subproc
+            permute.c permute.i get 1 add permute.c exch permute.i exch put
+            /permute.i 0 def
+        } {
+            permute.c permute.i 0 put
+            /permute.i permute.i 1 add def
+        } ifelse
+    } loop
+    end
+} bind def
+    
+/permute.swap {
+    /permute.bi exch def
+    /permute.ai exch def
+    permute.a permute.ai get
+    permute.a permute.bi get
+    permute.a exch permute.ai exch put
+    permute.a exch permute.bi exch put
+} bind def
+

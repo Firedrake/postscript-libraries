@@ -1,0 +1,40 @@
+%!PS
+
+/dmy2jd {
+    4 dict begin
+    /d exch def
+    /m exch def
+    /y exch def
+    /mn m 14 sub 12 idiv def
+    y 4800 add mn add 1461 mul 4 idiv
+    mn 12 mul neg 2 sub m add 367 mul 12 idiv add
+    y 4900 add mn add 100 idiv 3 mul 4 idiv sub
+    d add
+    32075 sub
+    end
+} def
+
+/jd2dmy {
+    15 dict begin
+    /y 4716 def
+    /v 3 def
+    /j 1401 def
+    /u 5 def
+    /m 2 def
+    /s 153 def
+    /n 12 def
+    /w 2 def
+    /r 4 def
+    /B 274277 def
+    /p 1461 def
+    /C -38 def
+    dup
+    4 mul B add 146097 idiv 3 mul 4 idiv C add j add add /f exch def
+    r f mul v add /e exch def
+    e p mod r idiv u mul w add /h exch def
+    /day h s mod u idiv 1 add def
+    /month h s idiv m add n mod 1 add def
+    /year e p idiv y sub n m add month sub n idiv add def
+    year month day
+    end
+} def

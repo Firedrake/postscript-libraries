@@ -1,0 +1,32 @@
+%!PS
+
+(deepeq.ps) run
+(test.ps) run
+
+(scalars) test.start
+1 1 deepeq test
+1 2 deepeq not test
+test.end
+
+(arrays) test.start
+[ 1 2 3 ] [ 1 2 3 ] deepeq test
+[ 1 2 3 ] [ 1 2 4 ] deepeq not test
+[ 1 2 3 ] [ 1 2 3 4 ] deepeq not test
+test.end
+
+(nested arrays) test.start
+[ 1 2 [ 3 4 ] ] [ 1 2 [ 3 4 ] ] deepeq test
+[ 1 2 [ 3 4 ] ] [ 1 2 [ 3 5 ] ] deepeq not test
+[ 1 2 [ 3 ] ] [ 1 2 [ 3 4 ] ] deepeq not test
+test.end
+
+(strings) test.start
+(abc) (abc) deepeq test
+(abc) (abd) deepeq not test
+(abc) (ab) deepeq not test
+test.end
+
+(dicts) test.start
+<< 1 2 3 4 >> << 1 2 3 4 >> deepeq test
+<< 1 2 3 4 >> << 5 6 7 8 >> deepeq not test
+test.end

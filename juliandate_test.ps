@@ -1,0 +1,15 @@
+%!PS
+
+(juliandate.ps) run
+(deepeq.ps) run
+(test.ps) run
+
+(dmy2yd) test.start
+2013 1 1 dmy2jd 2456294 eq test
+test.end
+
+(jd2dmy) test.start
+2456294 jd2dmy 1 eq test
+1 eq test
+2013 eq test
+test.end

@@ -1,0 +1,75 @@
+%!PS
+
+(deepeq.ps) run
+(test.ps) run
+(iterables.ps) run
+
+(keys) test.start
+<< 1 (a) 2 (b) 3 (c) 4 (d) >> keys [ 1 2 3 4 ] deepeq test
+test.end
+
+(values) test.start
+<< 1 (a) 2 (b) 3 (c) 4 (d) >> values [ (a) (b) (c) (d) ] deepeq test
+test.end
+
+(toset) test.start
+[ 1 2 3 4 ] toset << 1 true 2 true 3 true 4 true >> deepeq test
+test.end
+
+(map) test.start
+[ 1 2 3 4 5 ] { dup mul } map [ 1 4 9 16 25 ] deepeq test
+test.end
+
+(filter) test.start
+[ 1 2 3 4 5 ] { 2 mod 1 eq } filter [ 1 3 5 ] deepeq test
+test.end
+
+(reduce) test.start
+[ 1 2 3 4 5 ] { add } reduce 15 eq test
+test.end
+
+(reduce_init) test.start
+6 [ 1 2 4 5 ] { 1 exch div add } reduce_init 7.95 eq test
+test.end
+
+(enumerate) test.start
+[ (a) (b) (c) ] enumerate [ 0 (a) 1 (b) 2 (c) ] deepeq test
+test.end
+
+(enumerate.array) test.start
+[ (a) (b) (c) ] enumerate.array [ [ 0 (a) ] [ 1 (b) ] [ 2 (c) ] ] deepeq test
+test.end
+
+(apush.right) test.start
+[ 1 2 ] 3 apush.right [ 1 2 3 ] deepeq test
+test.end
+
+(apop.right) test.start
+[ [ 1 2 3 ] apop.right ] [ [ 1 2 ] 3 ] deepeq test
+test.end
+
+(apop.left) test.start
+[ [ 1 2 3 ] apop.left ] [ [ 2 3 ] 1 ] deepeq test
+test.end
+
+(apush.left) test.start
+[ 2 3 ] 1 apush.left [ 1 2 3 ] deepeq test
+test.end
+
+(all) test.start
+[ 1 2 3 4 ] { 0 gt } all test
+[ 1 2 3 4 ] { 1 eq } all not test
+test.end
+
+(any) test.start
+[ 1 2 3 4 ] { 0 eq } any not test
+[ 1 2 3 4 ] { 1 eq } any test
+test.end
+
+(listmax) test.start
+[ 1 2 3 4 ] listmax 4 eq test
+test.end
+
+(listmin) test.start
+[ 1 2 3 4 ] listmin 1 eq test
+test.end
