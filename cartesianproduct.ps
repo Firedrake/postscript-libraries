@@ -1,0 +1,37 @@
+%!PS
+
+/cartesianproduct { % [ [ a b ] [ c d ] ] -> [ [ a c ] [ a d ] [ b c ] [ b d ] ]
+    5 dict begin
+    /pat exch def
+    /c [ pat length { 0 } repeat ] def
+    /cm [ pat { length 1 sub } forall ] def 
+    /ex false def
+    [
+        {
+            ex {
+                exit
+            } if
+            [
+                0 1 c length 1 sub {
+                    /i exch def
+                    pat i get c i get get
+                } for
+            ]
+            /ss c length 1 sub def
+            {
+                c ss c ss get 1 add put
+                c ss get cm ss get gt {
+                    ss 0 eq {
+                        /ex true def
+                        exit
+                    } if
+                    c ss 0 put
+                    /ss ss 1 sub def
+                } {
+                    exit
+                } ifelse
+            } loop
+        } loop
+        end
+    ]
+} bind def
