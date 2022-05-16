@@ -26,6 +26,19 @@ Returns `true` if the two values on the top of the stack are equal –
 recursively checking strings, arrays and dictionaries for matching
 values.
 
+## cartesianproduct
+
+* cartesianproduct
+
+Returns an array of arrays, the n-ary cartesian product of the array
+of input arrays. So for example an input of
+
+    [ [ 1 2 ] [ 3 4 ] ]
+
+would produce
+
+    [ [ 1 3 ] [ 1 4 ] [ 2 3 ] [ 2 4 ] ]
+
 ## iterables
 
 This is basically for treating arrays as lists, and mangling arrays
