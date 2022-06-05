@@ -41,6 +41,53 @@
     primesh keys
 } bind def
 
+/isprime {
+    4 dict begin
+    /candidate exch def
+    1 {
+        candidate 2 lt {
+            false
+            exit
+        } if
+        candidate 2 eq {
+            true
+            exit
+        } if
+        candidate 2 mod 0 eq {
+            false
+            exit
+        } if
+        candidate 3 eq {
+            true
+            exit
+        } if
+        candidate 3 mod 0 eq {
+            false
+            exit
+        } if
+        /prime true def
+        /limit candidate sqrt cvi 1 add def
+        /anchor 0 def
+        {
+            /anchor anchor 6 add def
+            anchor limit gt {
+                exit
+            } if
+            [ -1 1 ] {
+                anchor add candidate exch mod 0 eq {
+                    /prime false def
+                    exit
+                } if
+            } forall
+            prime false eq {
+                exit
+            } if
+        } loop
+        prime
+    } repeat
+    end
+} bind def
+
 /primefactor {
     4 dict begin
     /n exch def
@@ -62,7 +109,7 @@
         } loop
         m 1 eq {
             exit
-        }
+        } if
     } forall
     m 1 gt {
                 f m known {

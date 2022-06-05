@@ -171,6 +171,11 @@ parameter. (Often you'll then want to quicksort them.)
 
     20 genprimes quicksort → [ 2 3 5 7 11 13 17 19 ]
 
+* isprime
+
+Return a boolean value indicating whether the integer argument is
+prime.
+
 * primefactor
 
 Generate a dict of prime factors and their powers.
