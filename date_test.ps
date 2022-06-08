@@ -1,0 +1,52 @@
+%!PS
+
+(date.ps) run
+(deepeq.ps) run
+(test.ps) run
+
+(ymd2jd) test.start
+[ 2013 1 1 ] ymd2jd 2456294 eq test
+test.end
+
+(jd2ymd) test.start
+2456294 jd2ymd [ 2013 1 1 ] deepeq test
+test.end
+
+(two-way) test.start
+[ 2022 6 13 ] dup ymd2jd jd2ymd deepeq test
+[ 2013 10 20 ] dup ymd2jd jd2ymd deepeq test
+test.end
+
+(jd2dow) test.start
+[ 2022 6 13 ] ymd2jd jd2dow 1 eq test
+[ 2013 10 20 ] ymd2jd jd2dow 0 eq test
+[ 1979 1 1 ] ymd2jd jd2dow 1 eq test
+test.end
+
+(lastdayofyear) test.start
+1977 lastdayofyear 6 eq test
+1980 lastdayofyear 3 eq test
+2003 lastdayofyear 3 eq test
+2009 lastdayofyear 4 eq test
+test.end
+
+(islongyear) test.start
+2004 islongyear test
+2005 islongyear not test
+2009 islongyear test
+test.end
+
+(ymd2isoywd) test.start
+[ 1977 1 2 ] ymd2isoywd [ 1976 53 7 ] deepeq test
+[ 1977 1 3 ] ymd2isoywd [ 1977 1 1 ] deepeq test
+[ 1977 12 31 ] ymd2isoywd [ 1977 52 6 ] deepeq test
+[ 1978 1 1 ] ymd2isoywd [ 1977 52 7 ] deepeq test
+[ 1978 1 2 ] ymd2isoywd [ 1978 1 1 ] deepeq test
+[ 1978 12 31 ] ymd2isoywd [ 1978 52 7 ] deepeq test
+[ 1979 1 1 ] ymd2isoywd [ 1979 1 1 ] deepeq test
+test.end
+
+(easter) test.start
+1961 y2easter [ 1961 4 2 ] deepeq test
+2022 y2easter [ 2022 4 17 ] deepeq test
+test.end

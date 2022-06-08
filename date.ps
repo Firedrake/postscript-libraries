@@ -1,0 +1,113 @@
+%!PS
+
+/ymd2jd {
+    4 dict begin
+    aload pop
+    /d exch def
+    /m exch def
+    /y exch def
+    /mn m 14 sub 12 idiv def
+    y 4800 add mn add 1461 mul 4 idiv
+    mn 12 mul neg 2 sub m add 367 mul 12 idiv add
+    y 4900 add mn add 100 idiv 3 mul 4 idiv sub
+    d add
+    32075 sub
+    end
+} bind def
+
+/jd2ymd {
+    15 dict begin
+    /y 4716 def
+    /v 3 def
+    /j 1401 def
+    /u 5 def
+    /m 2 def
+    /s 153 def
+    /n 12 def
+    /w 2 def
+    /r 4 def
+    /B 274277 def
+    /p 1461 def
+    /C -38 def
+    dup
+    4 mul B add 146097 idiv 3 mul 4 idiv C add j add add /f exch def
+    r f mul v add /e exch def
+    e p mod r idiv u mul w add /h exch def
+    /day h s mod u idiv 1 add def
+    /month h s idiv m add n mod 1 add def
+    /year e p idiv y sub n m add month sub n idiv add def
+    [ year month day ]
+    end
+} bind def
+
+/jd2dow {
+    1 add 7 mod 
+} bind def
+
+/lastdayofyear {
+    dup dup dup
+    400 idiv 4 1 roll
+    4 idiv 4 1 roll
+    100 idiv
+    sub add add
+    7 mod
+} bind def
+
+/islongyear {
+    dup
+    1 sub lastdayofyear 3 eq
+    exch
+    lastdayofyear 4 eq or
+} bind def
+
+/yearweeks {
+    islongyear {
+        1
+    } {
+        0
+    } ifelse
+    52 add
+} bind def
+
+/ymd2isoywd {
+    5 dict begin
+    /t exch def
+    /tj t ymd2jd def
+    /oy t 0 get def
+    /od tj jd2dow dup 0 eq { 7 add } if def
+    /ow tj [ oy 1 1 ] ymd2jd sub 1 add od sub 10 add 7 idiv def
+    1 {
+        ow 1 lt {
+            /ow oy 1 sub yearweeks def
+            /oy oy 1 sub def
+            exit
+        } if
+        ow oy yearweeks gt {
+            /ow 1 def
+            /oy oy 1 add def
+            exit
+        } if
+    } repeat
+    [ oy ow od ]
+    end
+} bind def
+
+/y2easter {
+    14 dict begin
+    /y exch def
+    /a y 19 mod def
+    /b y 100 idiv def
+    /c y 100 mod def
+    /d b 4 idiv def
+    /e b 4 mod def
+    /g 8 b mul 13 add 25 idiv def
+    /h 19 a mul b add d sub g sub 15 add 30 mod def
+    /i c 4 idiv def
+    /k c 4 mod def
+    /l 32 2 e mul add 2 i mul add h sub k sub 7 mod def
+    /m a 11 h mul add 19 l mul add 433 idiv def
+    /n h l add 7 m mul sub 90 add 25 idiv def
+    /p h l add 7 m mul add 33 n mul add 19 add 32 mod def
+    [ y n p ]
+    end
+} bind def

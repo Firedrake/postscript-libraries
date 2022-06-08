@@ -39,6 +39,49 @@ would produce
 
     [ [ 1 3 ] [ 1 4 ] [ 2 3 ] [ 2 4 ] ]
 
+## date
+
+Various date-related calculations. A "ymd" is an array of [ year month
+day ] values; a "jd" is the integer value of the Julian date at noon
+GMT of that day.
+
+* ymd2jd
+
+Converts a year-month-day tuple to a julian date (integer value at
+noon GMT on that day).
+
+    [ 2013 1 1 ] ymd2jd → 2456294
+
+* jd2ymd
+
+Converts a julian date to year-month-day.
+
+    2456294 jd2ymd → [ 2013 1 1 ]
+
+* jd2dow
+
+Extracts the day of the week from a Julian date (0 = Sunday)
+
+* lastdayofyear
+
+Calculates the last day of the year (0 = Sunday)
+
+* islongyear
+
+Returns `true` for an ISO8601 long year.
+
+* yearweeks
+
+Returns the number of ISO8601 weeks in the year.
+
+* ymd2isoywd
+
+Converts a year-month-day tuple to an ISO8601 year-week-day tuple.
+
+* y2easter
+
+Given a year, returns the year-month-day tuple for Gregorian Easter.
+
 ## iterables
 
 This is basically for treating arrays as lists, and mangling arrays
@@ -151,22 +194,6 @@ GhostScript.)
 
 Given an array which may have duplicate elements, return an array with
 no duplicates. (In arbitrary order.)
-
-## juliandate
-
-* dmy2jd
-
-Converts a year-month-day tuple to a julian date (integer value at
-noon GMT on that day).
-
-    2013 1 1 dmy2jd → 2456294
-
-* jd2dmy
-
-Converts a julian date to year-month-day.
-
-    2456294 jd2dmy → 2013 1 1
-
 ## maths
 
 * genprimes
