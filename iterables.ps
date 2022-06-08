@@ -16,7 +16,7 @@
     ]
 } bind def
 
-/toset { % array -> dict of (array, true)
+/toset { % array -> dict of (value, true)
     << exch
        {
            true
@@ -116,7 +116,7 @@
     [ 3 1 roll aload pop ]
 } bind def
 
-/apush { apush.right} bind def
+/apush { apush.right } bind def
 /apop { apop.left } bind def
 
 /all { % [a b] proc -> bool
@@ -151,4 +151,8 @@
 
 /listmin {
     { min } reduce
+} bind def
+
+/unique {
+    toset keys
 } bind def

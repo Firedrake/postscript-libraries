@@ -127,25 +127,30 @@ As above but for the first value.
 
 * all
 
-Given a list and a function, return `true` if all of the values of the
-function applied to a list member are true, otherwise `false`.
+Given an array and a function, return `true` if all of the values of
+the function applied to a list member are true, otherwise `false`.
 
     [ 1 2 3 4 ] { 0 gt } all → true
     [ 1 2 3 4 ] { 1 eq } all → false
 
 * any
 
-Given a list and a function, return `true` if any of the values of the
-function applied to a list member are true, otherwise `false`.
+Given an array and a function, return `true` if any of the values of
+the function applied to a list member are true, otherwise `false`.
 
     [ 1 2 3 4 ] { 0 eq } any → false
     [ 1 2 3 4 ] { 1 eq } any → true
 
 * listmax, listmin
 
-Given a list, return the maximum or minimum value in it. (This uses
+Given an array, return the maximum or minimum value in it. (This uses
 the non-standard two-argument `max` and `min` extensions in
 GhostScript.)
+
+* unique
+
+Given an array which may have duplicate elements, return an array with
+no duplicates. (In arbitrary order.)
 
 ## juliandate
 

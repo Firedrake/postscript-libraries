@@ -3,6 +3,7 @@
 (deepeq.ps) run
 (test.ps) run
 (iterables.ps) run
+(quicksort.ps) run
 
 (keys) test.start
 << 1 (a) 2 (b) 3 (c) 4 (d) >> keys [ 1 2 3 4 ] deepeq test
@@ -72,4 +73,9 @@ test.end
 
 (listmin) test.start
 [ 1 2 3 4 ] listmin 1 eq test
+test.end
+
+(unique) test.start
+[ 1 2 3 4 ] unique quicksort [ 1 2 3 4 ] deepeq test
+[ 1 1 2 3 4 4 4 ] unique quicksort [ 1 2 3 4 ] deepeq test
 test.end
