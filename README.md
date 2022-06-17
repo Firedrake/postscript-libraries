@@ -26,6 +26,8 @@ Returns `true` if the two values on the top of the stack are equal –
 recursively checking strings, arrays and dictionaries for matching
 values.
 
+    [ 1 2 [ 3 4 ] ] [ 1 2 [ 3 4 ] ] deepeq → true
+
 ## cartesianproduct
 
 * cartesianproduct
@@ -60,27 +62,40 @@ Converts a julian date to year-month-day.
 
 * jd2dow
 
-Extracts the day of the week from a Julian date (0 = Sunday)
+Extracts the day of the week from a Julian date (0 = Sunday).
+
+    [ 2022 6 13 ] ymd2jd jd2dow → 1
 
 * lastdayofyear
 
 Calculates the last day of the year (0 = Sunday)
 
+    2009 lastdayofyear → 4
+
 * islongyear
 
 Returns `true` for an ISO8601 long year.
 
+    2009 islongyear → true
+
 * yearweeks
 
-Returns the number of ISO8601 weeks in the year.
+Returns the number of ISO8601 weeks in the year. (52, 53 if
+`islongyear`.)
+
+    2009 yearweeks → 53
 
 * ymd2isoywd
 
 Converts a year-month-day tuple to an ISO8601 year-week-day tuple.
 
+     [ 1978 1 1 ] ymd2isoywd → [ 1977 52 7 ]
+
 * y2easter
 
 Given a year, returns the year-month-day tuple for Gregorian Easter.
+
+    2022 y2easter → [ 2022 4 17 ]
 
 ## iterables
 
@@ -91,15 +106,21 @@ into dicts and back.
 
 Given a dict, return an array of the keys.
 
+    << 1 (a) 2 (b) 3 (c) 4 (d) >> keys → [ 1 2 3 4 ]
+
 * values
 
 Given a dict, return an array of the values. (This will probably be in
 the same order as `keys`.)
 
+    << 1 (a) 2 (b) 3 (c) 4 (d) >> values → [ (a) (b) (c) (d) ]
+
 * toset
 
 Given an array, deduplicate it and return a dict of (array-value →
 true) pairs; the opposite of `keys`.
+
+    [ 1 2 3 4 ] toset → << 1 true 2 true 3 true 4 true >>
 
 * map
 
@@ -190,10 +211,16 @@ Given an array, return the maximum or minimum value in it. (This uses
 the non-standard two-argument `max` and `min` extensions in
 GhostScript.)
 
+    [ 6 4 4 5 2 4 ] listmax → 6
+    [ 4 3 3 2 3 6 ] listmin → 2
+
 * unique
 
 Given an array which may have duplicate elements, return an array with
 no duplicates. (In arbitrary order.)
+
+    [ 1 1 2 3 4 4 4 ] unique quicksort → [ 1 2 3 4 ]
+
 ## maths
 
 * genprimes
@@ -208,6 +235,8 @@ parameter. (Often you'll then want to quicksort them.)
 Return a boolean value indicating whether the integer argument is
 prime.
 
+    67 isprime → true
+
 * primefactor
 
 Generate a dict of prime factors and their powers.
@@ -221,6 +250,8 @@ prime. This uses the algorithm of Barkley Rosser as given in Explicit
 Bounds for Some Functions of Prime Numbers, _American Journal of
 Mathematics_, Vol. 63, No. 1 (Jan., 1941), pp. 211-232; the output
 will typically be fed to `genprimes`.
+
+    25 nthprimelimit → 110
 
 * gcd
 
