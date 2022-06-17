@@ -25,6 +25,11 @@ test.end
 73 primefactor << 73 1 >> deepeq test
 test.end
 
+(nthprimelimit) test.start
+10 nthprimelimit 29 ge test
+25 nthprimelimit 97 ge test
+test.end
+
 (gcd) test.start
 8 12 gcd 4 eq test
 54 24 gcd 6 eq test

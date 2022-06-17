@@ -214,6 +214,14 @@ Generate a dict of prime factors and their powers.
 
     75 primefactor → << 3 1 5 2 >>
 
+* nthprimelimit
+
+Calculate a number which is guaranteed to be no lower than the nth
+prime. This uses the algorithm of Barkley Rosser as given in Explicit
+Bounds for Some Functions of Prime Numbers, _American Journal of
+Mathematics_, Vol. 63, No. 1 (Jan., 1941), pp. 211-232; the output
+will typically be fed to `genprimes`.
+
 * gcd
 
 Calculate the greatest common divisor (highest common factor) of two

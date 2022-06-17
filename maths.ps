@@ -122,6 +122,17 @@
     end
 } bind def
 
+/nthprimelimit {
+    2 dict begin
+    /n exch def
+    /m 15 def
+    n 6 ge {
+        /m n ln n mul ln n mul 1 add cvi def
+    } if
+    m
+    end
+} bind def
+
 /gcd {
     {
         dup
