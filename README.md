@@ -179,13 +179,13 @@ As above but inserts a new initial value.
 * apop.left
 
 Create a new array consisting of the input array without its initial
-value, and that value separately. `apop` is an alias.
+value, and that value separately.
 
     [ 1 2 3 ] apop.left → [ 2 3 ] 1
 
 * apop.right
 
-As above but for the first value.
+As above but for the final value. `apop` is an alias.
 
     [ 1 2 3 ] apop.right → [ 1 2 ] 3
 
