@@ -319,6 +319,13 @@ Converts an array of character values to a string.
 
     [97 98 99 100 101 102] a2s → (abcdef)
 
+* safestring
+
+Replaces the string on top of the stack with an unlinked copy, so that
+you can change the copy without changing the original.
+
+    (abcdef) safestring → (abcdef)
+
 ## test
 
 Start a series of tests with `(string) test.start`.

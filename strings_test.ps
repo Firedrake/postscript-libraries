@@ -26,3 +26,7 @@ test.end
 (a2s) test.start
 [97 98 99 100 101 102] a2s (abcdef) deepeq test
 test.end
+
+(safestring) test.start
+(wibble) dup safestring dup 0 65 put deepeq not test
+test.end
