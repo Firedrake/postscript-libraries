@@ -3,7 +3,9 @@
 /quicksort { % [ a c b ] -> [ a b c ]
     1 dict begin
     /arr exch def
-    0 arr length 1 sub quicksort.main
+    arr length 0 gt {
+        0 arr length 1 sub quicksort.main
+    } if
     arr
     end
 } bind def
