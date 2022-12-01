@@ -326,6 +326,13 @@ you can change the copy without changing the original.
 
     (abcdef) safestring → (abcdef)
 
+## file
+
+* readlines
+
+Given a text filename, returns an array of strings, one per line in
+the file.
+
 ## test
 
 Start a series of tests with `(string) test.start`.
