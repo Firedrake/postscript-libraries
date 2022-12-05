@@ -221,6 +221,12 @@ no duplicates. (In arbitrary order.)
 
     [ 1 1 2 3 4 4 4 ] unique quicksort → [ 1 2 3 4 ]
 
+* reverse
+
+Given an array, returns that array reversed.
+
+    [ 1 2 3 4 ] reverse → [ 4 3 2 1 ]
+
 ## maths
 
 * genprimes
