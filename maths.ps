@@ -8,7 +8,11 @@
     /mx exch def
     /primesh mx dict def
     2 1 3 {
-        primesh exch true put
+        dup mx le {
+            primesh exch true put
+        } {
+            pop
+        } ifelse
     } for
     6 6 mx 1 add {
         dup 1 sub exch 1 add 2 exch {
